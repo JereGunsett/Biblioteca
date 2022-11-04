@@ -1,10 +1,12 @@
 import pickle #libreria para guardar y recuperar informacion
 from listas import *
+from libros import *
+from socios import *
 
-class Videoclub:
+class Biblioteca:
     def __init__(self):
         self.socios = []
-        self.peliculas = []
+        self.libros = []
     def contiene_socio(self,dni)->bool:
         esta = False
         for socio in self.socios:
@@ -26,34 +28,34 @@ class Videoclub:
         #indice_socio = self.socios.index(socio)
         #self.socios.pop(indice_socio)
     
-    def contiene_pelicula(self,titulo):
+    def contiene_libro(self,titulo):
         esta = False
-        for pelicula in self.peliculas:
-            if pelicula.titulo == titulo:
+        for libro in self.libros:
+            if libro.titulo == titulo:
                 esta = True
         return esta
-    def buscar_pelicula(self,titulo)->"Pelicula":
+    def buscar_libro(self,titulo):
         esta = False
-        for pelicula in self.peliculas:
-            if pelicula.titulo == titulo:
-                devolver = pelicula
+        for libro in self.libros:
+            if libro.titulo == titulo:
+                devolver = libro
         return devolver
-    def alta_nueva_pelicula(self,pelicula)->None:
-        self.peliculas.append(pelicula)
+    def alta_nuevo_libro(self,libro)->None:
+        self.libros.append(libro)
         
-    def baja_pelicula(self,titulo)->None:
-        pelicula = self.buscar_pelicula(titulo)
-        self.peliculas.remove(pelicula)
+    def baja_libro(self,titulo)->None:
+        libro = self.buscar_libro(titulo)
+        self.libros.remove(libro)
         
-    def alquilar_pelicula(self,titulo,dni):
-        for pelicula in self.peliculas:
-            if pelicula.titulo == titulo and pelicula.alquilada == None:
-                pelicula.alquilada = dni
+    def alquilar_libro(self,titulo,dni):
+        for libro in self.libros:
+            if libro.titulo == titulo and libro.alquilada == None:
+                libro.alquilada = dni
                 
-    def devolver_pelicula(self,titulo):
-        for pelicula in self.peliculas:
-            if pelicula.titulo == titulo and pelicula.alquilada != None:
-                pelicula.alquilada = None
+    def devolver_libro(self,titulo):
+        for libro in self.libros:
+            if libro.titulo == titulo and libro.alquilada != None:
+                libro.alquilada = None
          
 def guardar_archivo(videoclub,archivo="video.pickle"):
     pickle_file = open(archivo, 'wb')
@@ -112,34 +114,34 @@ if __name__ == "__main__":
         if opcion == 3:
             titulo = input("Titulo: ")
             genero = input("Genero: ")
-            anio = input("Anio: ")
-            peli = Pelicula(titulo,genero,anio)
-            if videoclub.contiene_pelicula(peli.titulo):
-                print("La peli ya existe")
+            autor = input("Autor: ")
+            libro = Libros(titulo,genero,autor)
+            if videoclub.contiene_libro(libro.titulo):
+                print("El libro ya existe")
             else:
-                videoclub.alta_nueva_pelicula(peli)
-                print("Pelicula agregada")
+                videoclub.alta_nueva_pelicula(libro)
+                print("Libro agregado")
         if opcion == 4:
             dni = input("Titulo:")
             if videoclub.contiene_pelicula(dni):
-                print("La pelicula no existe")
+                print("El libro no existe")
             else:
                 videoclub.baja_pelicula(socio)
-                print("Pelicula ha sido dada de baja")
+                print("El libro ha sido dado de baja")
         if opcion == 5:
             titulo = input("Titulo: ")
             dni = input("DNI socio: ")
             if videoclub.contiene_pelicula() and videoclub.contiene_socio():
                 videoclub.alquilar_pelicula(titulo,dni)
             else:
-                print("No se pudo alquilar la pelicula")
+                print("No se pudo alquilar el libro")
         if opcion == 6:
             titulo = input("Titulo: ")
             if not videoclub.contiene_pelicula(titulo):
-                print("La pelicula no existe")
+                print("El Libro no existe")
             else:
                 videoclub.devolver_pelicula(titulo)
-                print("Pelicula ha sido devuelta")
+                print("El Libro ha sido devuelto")
         if opcion == 7:
             guardar_archivo(videoclub)
         if opcion == 8:
