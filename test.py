@@ -1,23 +1,23 @@
-from videoclub import *
+from biblioteca import *
 
-videoclub = Videoclub()
+biblioteca = Biblioteca()
 socio = Socio(30331261,"Matias",4804828,"Av Siempreviva 1234")
-videoclub.alta_nuevo_socio(socio)
-#print(videoclub.contiene_socio(30331261))
+biblioteca.alta_nuevo_socio(socio)
+#print(biblioteca.contiene_socio(30331261))
 
-#print(videoclub.buscar_socio(30331261))
+#print(biblioteca.buscar_socio(30331261))
 
-videoclub.baja_socio(30331261)
-#print(videoclub.contiene_socio(30331261))
+biblioteca.baja_socio(30331261)
+#print(biblioteca.contiene_socio(30331261))
 
-peli = Pelicula("Jumanji","Comedia",1995)
-videoclub.alta_nueva_pelicula(peli)
-#print(videoclub.contiene_pelicula("Jumanji"))
-#print(videoclub.buscar_pelicula("Jumanji"))
-#videoclub.baja_pelicula("Jumanji")
-#print(videoclub.contiene_pelicula("Jumanji"))
-videoclub.alquilar_pelicula("Jumanji",30331261)
-#print(videoclub.buscar_pelicula("Jumanji"))
+libro = Libros("Frankestein","Terror",1885)
+biblioteca.alta_nuevo_libro(libro)
+#print(biblioteca.contiene_libro("Frankestein"))
+#print(biblioteca.buscar_libro("Frankestein"))
+#biblioteca.baja_pelicula("Frankestein")
+#print(videoclub.contiene_libro("Frankestein"))
+biblioteca.alquilar_pelicula("Frankestein",30331261)
+#print(biblioteca.buscar_libro("Frankestein"))
 
 #print(socio == socio)
 socio2 = Socio(40331261,"Natanael",3515645489,"Nueva cordoba")
