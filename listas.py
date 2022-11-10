@@ -5,6 +5,7 @@ class Nodo:
 
     def __init__(self,datoInicial):
         self.dato = datoInicial
+        self.siguiente = None
 
     def obtenerDato(self):
         return self.dato

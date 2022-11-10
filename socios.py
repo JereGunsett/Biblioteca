@@ -1,9 +1,9 @@
 class Socio():
-    def __init__(self,dni,nombre,telefono,domicilio):
+    def __init__(self,dni,nombre,apellido,telefono):
         self.dni =dni
         self.nombre = nombre
+        self.apellido = apellido
         self.telefono = telefono
-        self.domicilio = domicilio
         
     def __lt__(self, other): # x<y llama x.__lt__(y)
         return self.dni<other.dni
@@ -19,5 +19,5 @@ class Socio():
         return self.dni>=other.dni
 
     def __str__(self):
-        return "DNI: {0}\nNombre: {1}\nTelefono: {2}\nDomicilio: {3}\n" \
-            .format(self.dni,self.nombre,self.telefono,self.domicilio)
+        return "DNI: {0}\nNombre: {1}\nApellido: {2}\nTelefono {3}\n" \
+            .format(self.dni,self.nombre,self.apellido,self.telefono)
