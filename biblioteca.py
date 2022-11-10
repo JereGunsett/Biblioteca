@@ -57,14 +57,14 @@ class Biblioteca:
             if libro.titulo == titulo and libro.alquilada != None:
                 libro.alquilada = None
          
-def guardar_archivo(videoclub,archivo="video.pickle"):
+def guardar_archivo(biblioteca,archivo="libro.pickle"):
     pickle_file = open(archivo, 'wb')
-    pickle.dump(videoclub, pickle_file)
+    pickle.dump(biblioteca, pickle_file)
     pickle_file.close()
 
-def leer_archivo(videoclub,archivo="video.pickle"):
+def leer_archivo(biblioteca,archivo="libro.pickle"):
     pickle_file = open(archivo,'rb')
-    videoclub = pickle.load(pickle_file)
+    biblioteca = pickle.load(pickle_file)
     pickle_file.close()
-    return videoclub
+    return biblioteca
     
