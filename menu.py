@@ -22,7 +22,7 @@ def menu():
 
 
 if __name__ == "__main__":
-    videoclub = Videoclub()
+    biblioteca = Biblioteca()
     opcion = 0
     while opcion != 9:
         opcion = menu()
@@ -32,54 +32,54 @@ if __name__ == "__main__":
             telefono = input("Telefono: ")
             dire = input("Dirección: ")
             socio = Socio(dni,nombre,telefono,dire)
-            if videoclub.contiene_socio(socio.dni):
+            if biblioteca.contiene_socio(socio.dni):
                 print("El socio ya existe")
             else:
-                videoclub.alta_nuevo_socio(socio)
+                biblioteca.alta_nuevo_socio(socio)
                 print("Socio Agregado")
         if opcion == 2:
             dni = input("Dni:")
-            if videoclub.contiene_socio(dni):
+            if biblioteca.contiene_socio(dni):
                 print("El socio no existe")
             else:
-                videoclub.baja_socio(socio)
+                biblioteca.baja_socio(socio)
                 print("Socio dado de baja")
         if opcion == 3:
             titulo = input("Titulo: ")
             genero = input("Genero: ")
             anio = input("Anio: ")
-            peli = Pelicula(titulo,genero,anio)
-            if videoclub.contiene_pelicula(peli.titulo):
+            libro = Libros(titulo,genero,anio)
+            if biblioteca.contiene_libro(libro.titulo):
                 print("La peli ya existe")
             else:
-                videoclub.alta_nueva_pelicula(peli)
+                biblioteca.alta_nuevo_libro(libro)
                 print("Pelicula agregada")
         if opcion == 4:
             dni = input("Titulo:")
-            if videoclub.contiene_pelicula(dni):
+            if biblioteca.contiene_libro(dni):
                 print("La pelicula no existe")
             else:
-                videoclub.baja_pelicula(socio)
+                biblioteca.baja_libro(socio)
                 print("Pelicula ha sido dada de baja")
         if opcion == 5:
             titulo = input("Titulo: ")
             dni = input("DNI socio: ")
-            if videoclub.contiene_pelicula() and videoclub.contiene_socio():
-                videoclub.alquilar_pelicula(titulo,dni)
+            if biblioteca.contiene_libro() and biblioteca.contiene_socio():
+                biblioteca.alquilar_libro(titulo,dni)
             else:
-                print("No se pudo alquilar la pelicula")
+                print("No se pudo alquilar el libro")
         if opcion == 6:
             titulo = input("Titulo: ")
-            if not videoclub.contiene_pelicula(titulo):
-                print("La pelicula no existe")
+            if not biblioteca.contiene_libro(titulo):
+                print("El libro no existe")
             else:
-                videoclub.devolver_pelicula(titulo)
-                print("Pelicula ha sido devuelta")
+                biblioteca.devolver_libro(titulo)
+                print("El libro a sido devuelto")
         if opcion == 7:
-            guardar_archivo(videoclub)
+            guardar_archivo(biblioteca)
         if opcion == 8:
-            videoclub = leer_archivo(videoclub)
-        print("Socios: ", len(videoclub.socios))
-        print("Peliculas: ", len(videoclub.peliculas))
+            biblioteca = leer_archivo(biblioteca)
+        print("Socios: ", len(biblioteca.socios))
+        print("Libros: ", len(biblioteca.libros))
 
 

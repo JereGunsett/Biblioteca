@@ -28,7 +28,7 @@ class Lista():
 
     def agregar(self,dato): #creo un nodo nuevo y lo agrego al principio
         nodo_nuevo = Nodo(dato)
-        nodo_uevo.siguiente = self.primero
+        nodo_nuevo.siguiente = self.primero
         if self.vacia() == True:
             self.ultimo = nodo_nuevo
         self.primero = nodo_nuevo
@@ -85,7 +85,7 @@ class Lista():
     
     def agregar_final_cte(self):
         """O(1) -> constante"""
-        nuevo_nodo=Nodo(e)
+        nuevo_nodo=Nodo()
         self.tamanio += 1
         self.ultimo.siguiente = nuevo_nodo
         self.ultimo = nuevo_nodo
