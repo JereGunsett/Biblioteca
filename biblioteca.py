@@ -5,8 +5,8 @@ from socios import *
 
 class Biblioteca:
     def __init__(self):
-        self.socios = []
-        self.libros = []
+        self.socios = Lista()
+        self.libros = Lista()
     def contiene_socio(self,dni)->bool:
         esta = False
         for socio in self.socios:
