@@ -6,6 +6,8 @@ biblioteca.alta_nuevo_socio(socio)
 print(biblioteca.contiene_socio(30331261))
 
 print(biblioteca.buscar_socio(30331261))
+socio1 = biblioteca.buscar_socio(30331261)
+print(socio1.__str__())
 
 biblioteca.baja_socio(30331261)
 
@@ -24,4 +26,3 @@ libro = Libros("El señor de las moscas", "Novela", "William Golding")
 biblioteca.alta_nuevo_libro(libro)
 print(biblioteca.buscar_libro("El señor de las moscas"))
 print(biblioteca.contiene_libro("El señor de las moscas"))
-

@@ -41,7 +41,7 @@ class Lista():
             print(nodo_i.dato)
             nodo_i = nodo_i.siguiente
 
-    def tamanio(self)->int: #ejercicio
+    def magnitud(self)->int: #ejercicio
         """devuelve la cantidad de elementos o nodos que hay en la lsita"""
         return self.tamanio
 
@@ -69,12 +69,12 @@ class Lista():
             nodo_i = nodo_i.siguiente
         if self.primero == None:
             self.ultimo = None
-        self.tamanio -= 1
+        self.tamanio = self.tamanio - 1
     
     def agregar_final(self,e)->None:
         """O(n) -> lineal"""
         nuevo_nodo = Nodo(e) # creo un nodo nuevo
-        self.tamanio +=1
+        self.tamanio = self.tamanio + 1
         if self.vacia():
             self.primero = nuevo_nodo
         else:
@@ -87,9 +87,30 @@ class Lista():
     def agregar_final_cte(self):
         """O(1) -> constante"""
         nuevo_nodo=Nodo()
-        self.tamanio += 1
+        self.tamanio = self.tamanio + 1
         self.ultimo.siguiente = nuevo_nodo
         self.ultimo = nuevo_nodo
+    
+    def indice(self, e)->int: # es parecido a buscar
+        " el método de la lista toma un elemento y si se encuentra devuelve el primer índice en donde se encuentra"
+        nodo = self.primero
+        indice = 0
+        while nodo.siguiente !=None:
+            if nodo.dato == e:
+                return indice
+            indice +=1
+            nodo = nodo.siguiente
+        
+    def devolver(self,i:int)->object:
+        "El método elem toma un índice i y devuelve el i-ésimo elemento de la lista"
+        nodo = self.primero
+        d = nodo.dato
+        for j in range(i):
+            nodo = nodo.siguiente
+        d = nodo.dato
+        
+        return d
+        
 
 
 if __name__ == "__main__":
