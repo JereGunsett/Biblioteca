@@ -7,10 +7,10 @@ def menu():
         print("--")
         print("(1) Dar de alta nuevo socio")
         print("(2) Dar de baja socio")
-        print("(3) Dar de alta nueva pelicula")
-        print("(4) Dar de baja pelicula")
-        print("(5) Alquilar película")
-        print("(6) Devolver película")
+        print("(3) Dar de alta nuevo libro")
+        print("(4) Dar de baja libro")
+        print("(5) Alquilar libro")
+        print("(6) Devolver libro")
         print("(7) Guardar archivo")
         print("(8) Leer archivo")
         print("(9) Salir")
@@ -50,17 +50,17 @@ if __name__ == "__main__":
             anio = input("Anio: ")
             libro = Libros(titulo,genero,anio)
             if biblioteca.contiene_libro(libro.titulo):
-                print("La peli ya existe")
+                print("El libro ya existe")
             else:
                 biblioteca.alta_nuevo_libro(libro)
-                print("Pelicula agregada")
+                print("Libro agregado")
         if opcion == 4:
             dni = input("Titulo:")
             if biblioteca.contiene_libro(dni):
-                print("La pelicula no existe")
+                print("El libro no existe")
             else:
                 biblioteca.baja_libro(socio)
-                print("Pelicula ha sido dada de baja")
+                print("El libro ha sido dado de baja")
         if opcion == 5:
             titulo = input("Titulo: ")
             dni = input("DNI socio: ")
@@ -79,7 +79,7 @@ if __name__ == "__main__":
             guardar_archivo(biblioteca)
         if opcion == 8:
             biblioteca = leer_archivo(biblioteca)
-        print("Socios: ", len(biblioteca.socios))
-        print("Libros: ", len(biblioteca.libros))
+        print("Socios: ", biblioteca.socios.magnitud())
+        print("Libros: ", biblioteca.libros.magnitud())
 
 
