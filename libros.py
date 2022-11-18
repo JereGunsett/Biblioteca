@@ -6,12 +6,17 @@ class Libros():
         self.alquilado = None
     
     def __str__(self):
-        return "Titulo: {0}\nGenero: {1}\nAño: {2}\nAlquilada: {3}" \
-            .format(self.title,self.genero,self.autor,self.alquilado)
+        alquilado = ''
+        if self.alquilado == None:
+            alquilado = 'Sin alquilar'
+        else:
+            alquilado = self.alquilado
+        return "Titulo: {0}\nGenero: {1}\nAño: {2}\nAlquilado: {3}\n" \
+            .format(self.title,self.genero,self.autor,alquilado)
         #return f"Titulo: {self.titulo}\nGenero: {self.genero}\nAño: {self.anio}\nAlquilada: {self.alquilada}"
 
-    def esta_alquilada(self):
-        return self.alquilada != None
+    def esta_alquilado(self):
+        return self.alquilado != None
     
     def __lt__(self, other): # x<y llama x.__lt__(y)
         return self.title<other.title

@@ -16,7 +16,11 @@ def menu():
         print("(9) Salir")
         # consultar pelicula - me devuelve la informacion de la pelicula
         print("--")
-        opcion = int(input("Elija una opcion: "))
+        try:
+          opcion = int(input("Elija una opcion: "))
+        except:
+            opcion = 0
+            print('Elija un numero del 1 al 9')
         print("--")
     return opcion
 
@@ -74,12 +78,13 @@ if __name__ == "__main__":
                 print("El libro no existe")
             else:
                 biblioteca.devolver_libro(titulo)
-                print("El libro a sido devuelto")
+                
         if opcion == 7:
             guardar_archivo(biblioteca)
         if opcion == 8:
             biblioteca = leer_archivo(biblioteca)
-        print("Socios: ", biblioteca.socios.magnitud())
-        print("Libros: ", biblioteca.libros.magnitud())
+            print(biblioteca.__str__())
+        #print("Socios: ", biblioteca.socios.magnitud())
+        #print("Libros: ", biblioteca.libros.magnitud())
 
 

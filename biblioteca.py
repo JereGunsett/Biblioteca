@@ -68,16 +68,37 @@ class Biblioteca:
         i = self.libros.magnitud()
         for j in range(i):
             libro = self.libros.devolver(j)
-            if libro.titulo == titulo and libro.alquilada == None:
+            if libro.title == titulo and libro.alquilado == None:
                 libro.alquilado = dni
                 
     def devolver_libro(self,titulo):
-        for libro in self.libros:
-            if libro.titulo == titulo and libro.alquilada != None:
-                libro.alquilada = None
-                
-                
-         
+        i = self.libros.magnitud()
+        for j in range(i):
+            libro = self.libros.devolver(j)
+            if libro.title == titulo and libro.alquilado != None:
+                libro.alquilado = None
+                print('El libro ha sido devuelto!')
+            if libro.title == titulo and libro.alquilado == None:
+                print('El libro no esta alquilado!')
+            
+    def __str__(self):
+        impresion = 'Mi Biblioteca:\n'
+        if self.libros.magnitud()==0:
+            impresion += 'Lamentablemente no hay libros aqui !\n'
+        else:
+            impresion += '+'*10 + '\nLIBROS\n'+'+'*10+'\n'
+        for i in range(self.libros.magnitud()):
+          libro = self.libros.devolver(i)
+          impresion += libro.__str__()
+        
+        if self.socios.magnitud()==0:
+            impresion += 'Todavia no se inscribio ningun socio !\n'
+        else:
+            impresion += '+'*10 + '\nSOCIOS\n'+'+'*10+'\n'
+        for i in range(self.socios.magnitud()):
+          socio = self.socios.devolver(i)
+          impresion += socio.__str__()
+        return impresion
 def guardar_archivo(biblioteca,archivo="libro.pickle"):
     pickle_file = open(archivo, 'wb')
     pickle.dump(biblioteca, pickle_file)
@@ -86,6 +107,6 @@ def guardar_archivo(biblioteca,archivo="libro.pickle"):
 def leer_archivo(biblioteca,archivo="libro.pickle"):
     pickle_file = open(archivo,'rb')
     biblioteca = pickle.load(pickle_file)
-    pickle_file.close()
+    pickle_file.close()    
     return biblioteca
     
