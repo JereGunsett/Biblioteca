@@ -44,7 +44,7 @@ class Biblioteca:
         i = self.libros.magnitud()
         for j in range(i):
             nodo = self.libros.devolver(j)
-            if nodo.titulo==titulo:
+            if nodo.title == titulo:
                 esta = True            
         return esta
     
@@ -53,7 +53,7 @@ class Biblioteca:
         i = self.libros.magnitud()
         for j in range(i):
             nodo = self.libros.devolver(j)
-            if nodo.titulo==titulo:
+            if nodo.title==titulo:
                 devolver = nodo            
         return devolver
     
@@ -65,9 +65,11 @@ class Biblioteca:
         self.libros.remover(libro)
         
     def alquilar_libro(self,titulo,dni):
-        for libro in self.libros:
+        i = self.libros.magnitud()
+        for j in range(i):
+            libro = self.libros.devolver(j)
             if libro.titulo == titulo and libro.alquilada == None:
-                libro.alquilada = dni
+                libro.alquilado = dni
                 
     def devolver_libro(self,titulo):
         for libro in self.libros:

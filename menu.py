@@ -39,32 +39,32 @@ if __name__ == "__main__":
                 print("Socio Agregado")
         if opcion == 2:
             dni = input("Dni:")
-            if biblioteca.contiene_socio(dni):
+            if not biblioteca.contiene_socio(dni):
                 print("El socio no existe")
             else:
-                biblioteca.baja_socio(socio)
+                biblioteca.baja_socio(dni)
                 print("Socio dado de baja")
         if opcion == 3:
             titulo = input("Titulo: ")
             genero = input("Genero: ")
             anio = input("Anio: ")
             libro = Libros(titulo,genero,anio)
-            if biblioteca.contiene_libro(libro.titulo):
+            if biblioteca.contiene_libro(libro.title):
                 print("El libro ya existe")
             else:
                 biblioteca.alta_nuevo_libro(libro)
                 print("Libro agregado")
         if opcion == 4:
-            dni = input("Titulo:")
-            if biblioteca.contiene_libro(dni):
+            titulo = input("Titulo:")
+            if not biblioteca.contiene_libro(titulo):
                 print("El libro no existe")
             else:
-                biblioteca.baja_libro(socio)
+                biblioteca.baja_libro(titulo)
                 print("El libro ha sido dado de baja")
         if opcion == 5:
             titulo = input("Titulo: ")
             dni = input("DNI socio: ")
-            if biblioteca.contiene_libro() and biblioteca.contiene_socio():
+            if biblioteca.contiene_libro(titulo) and biblioteca.contiene_socio(dni):
                 biblioteca.alquilar_libro(titulo,dni)
             else:
                 print("No se pudo alquilar el libro")

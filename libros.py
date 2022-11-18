@@ -1,13 +1,13 @@
 class Libros():
-    def __init__(self,titulo,genero,autor):
-        self.titulo = titulo
+    def __init__(self,title,genero,autor):
+        self.title = title
         self.genero = genero
         self.autor = autor
         self.alquilado = None
     
     def __str__(self):
         return "Titulo: {0}\nGenero: {1}\nAño: {2}\nAlquilada: {3}" \
-            .format(self.titulo,self.genero,self.autor,self.alquilado)
+            .format(self.title,self.genero,self.autor,self.alquilado)
         #return f"Titulo: {self.titulo}\nGenero: {self.genero}\nAño: {self.anio}\nAlquilada: {self.alquilada}"
 
     def esta_alquilada(self):
