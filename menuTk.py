@@ -4,10 +4,9 @@ from biblioteca import *
 
 
 def menu(opc):
-    
-    biblioteca = Biblioteca()
     opcion = 0
     opcion = opc
+    biblioteca = Biblioteca()
     if opcion == 1:
         nombre = input("Nombre: ")
         dni = input("Dni: ")
@@ -19,59 +18,84 @@ def menu(opc):
         else:
             biblioteca.alta_nuevo_socio(socio)
             print("Socio Agregado")
-    
+            
     if opcion == 2:
         dni = input("Dni:")
         if not biblioteca.contiene_socio(dni):
             print("El socio no existe")
         else:
-            socio = biblioteca.buscar_socio(dni)
-            biblioteca.baja_socio(socio)
+            biblioteca.baja_socio(dni)
             print("Socio dado de baja")
+            
     if opcion == 3:
         titulo = input("Titulo: ")
         genero = input("Genero: ")
         anio = input("Anio: ")
         libro = Libros(titulo,genero,anio)
-        if biblioteca.contiene_libro(libro.titulo):
+        if biblioteca.contiene_libro(libro.title):
             print("El libro ya existe")
         else:
             biblioteca.alta_nuevo_libro(libro)
             print("Libro agregado")
+            
     if opcion == 4:
-        dni = input("Titulo:")
-        if not biblioteca.contiene_libro(dni):
+        titulo = input("Titulo:")
+        if not biblioteca.contiene_libro(titulo):
             print("El libro no existe")
         else:
-            biblioteca.baja_libro(socio)
+            biblioteca.baja_libro(titulo)
             print("El libro ha sido dado de baja")
+            
     if opcion == 5:
         titulo = input("Titulo: ")
         dni = input("DNI socio: ")
-        if biblioteca.contiene_libro() and biblioteca.contiene_socio():
+        if biblioteca.contiene_libro(titulo) and biblioteca.contiene_socio(dni):
             biblioteca.alquilar_libro(titulo,dni)
         else:
             print("No se pudo alquilar el libro")
+            
     if opcion == 6:
         titulo = input("Titulo: ")
         if not biblioteca.contiene_libro(titulo):
             print("El libro no existe")
         else:
             biblioteca.devolver_libro(titulo)
-            print("El libro a sido devuelto")
+    
     if opcion == 7:
-        guardar_archivo(biblioteca)
+        biblioteca.ordenada()
+        dni = input("DNI: ")
+        socio = biblioteca.buscar_socio(dni)
+        if socio != None:
+            print(socio.__str__())
+        else:
+            print('El socio no existe')
+    
     if opcion == 8:
+        biblioteca.ordenada()
+        titulo = input("Titulo: ")
+        libro = biblioteca.buscar_libro(titulo)
+        if libro != None:
+            print(libro.__str__())
+        else:
+            print('El libro no existe')
+            
+    if opcion == 9:
+        biblioteca.ordenada()
+        guardar_archivo(biblioteca)
+        print('Se ha guardado con exito!')
+        
+    if opcion == 10:
         biblioteca = leer_archivo(biblioteca)
         print(biblioteca.__str__())
-    if opcion == 9:
-        return exit
+    
+    if opcion == 11:
+        return exit          
         
     ejecutar()
     
 def ejecutar():
     root = Tk(className='- Nuestra Biblioteca')
-    root.geometry("400x215")
+    root.geometry("400x251")
     v = IntVar()
 
     color = "#" + str(randint(0,9))+str(randint(0,9))+str(randint(0,9))+str(randint(0,9))+str(randint(0,9))+str(randint(0,9))
@@ -89,18 +113,22 @@ def ejecutar():
     color = "#" + str(randint(0,9))+str(randint(0,9))+str(randint(0,9))+str(randint(0,9))+str(randint(0,9))+str(randint(0,9))
     Radiobutton(root, text='(6) Devolver libro', variable=v, value=6,bg=color,command=root.destroy).pack(anchor=W)
     color = "#" + str(randint(0,9))+str(randint(0,9))+str(randint(0,9))+str(randint(0,9))+str(randint(0,9))+str(randint(0,9))
-    Radiobutton(root, text='(7) Guardar archivo', variable=v, value=7,bg=color,command=root.destroy).pack(anchor=W)
+    Radiobutton(root, text='(7) Buscar socio', variable=v, value=7,bg=color,command=root.destroy).pack(anchor=W)
     color = "#" + str(randint(0,9))+str(randint(0,9))+str(randint(0,9))+str(randint(0,9))+str(randint(0,9))+str(randint(0,9))
-    Radiobutton(root, text='(8) Leer archivo', variable=v, value=8,bg=color,command=root.destroy).pack(anchor=W)
+    Radiobutton(root, text='(8) Buscar libro', variable=v, value=8,bg=color,command=root.destroy).pack(anchor=W)
     color = "#" + str(randint(0,9))+str(randint(0,9))+str(randint(0,9))+str(randint(0,9))+str(randint(0,9))+str(randint(0,9))
-    Radiobutton(root, text='(9) Salir', variable=v, value=9,bg=color,command=root.destroy).pack(anchor=W)
+    Radiobutton(root, text='(9) Guardar archivo', variable=v, value=9,bg=color,command=root.destroy).pack(anchor=W)
+    color = "#" + str(randint(0,9))+str(randint(0,9))+str(randint(0,9))+str(randint(0,9))+str(randint(0,9))+str(randint(0,9))
+    Radiobutton(root, text='(10) Leer archivo', variable=v, value=10,bg=color,command=root.destroy).pack(anchor=W)
+    color = "#" + str(randint(0,9))+str(randint(0,9))+str(randint(0,9))+str(randint(0,9))+str(randint(0,9))+str(randint(0,9))
+    Radiobutton(root, text='(11) Salir', variable=v, value=11,bg=color,command=root.destroy).pack(anchor=W)
     color = "#" + str(randint(0,9))+str(randint(0,9))+str(randint(0,9))+str(randint(0,9))+str(randint(0,9))+str(randint(0,9))
     root.config(bg=color)
     root.mainloop()
     menu(v.get())
 
 root = Tk(className='- Nuestra Biblioteca')
-root.geometry("400x215")
+root.geometry("400x251")
 v = IntVar()
 
 color = "#" + str(randint(0,9))+str(randint(0,9))+str(randint(0,9))+str(randint(0,9))+str(randint(0,9))+str(randint(0,9))
@@ -118,11 +146,15 @@ Radiobutton(root, text='(5) Alquilar libro', variable=v, value=5,bg=color,comman
 color = "#" + str(randint(0,9))+str(randint(0,9))+str(randint(0,9))+str(randint(0,9))+str(randint(0,9))+str(randint(0,9))
 Radiobutton(root, text='(6) Devolver libro', variable=v, value=6,bg=color,command=root.destroy).pack(anchor=W)
 color = "#" + str(randint(0,9))+str(randint(0,9))+str(randint(0,9))+str(randint(0,9))+str(randint(0,9))+str(randint(0,9))
-Radiobutton(root, text='(7) Guardar archivo', variable=v, value=7,bg=color,command=root.destroy).pack(anchor=W)
+Radiobutton(root, text='(7) Buscar socio', variable=v, value=7,bg=color,command=root.destroy).pack(anchor=W)
 color = "#" + str(randint(0,9))+str(randint(0,9))+str(randint(0,9))+str(randint(0,9))+str(randint(0,9))+str(randint(0,9))
-Radiobutton(root, text='(8) Leer archivo', variable=v, value=8,bg=color,command=root.destroy).pack(anchor=W)
+Radiobutton(root, text='(8) Buscar libro', variable=v, value=8,bg=color,command=root.destroy).pack(anchor=W)
 color = "#" + str(randint(0,9))+str(randint(0,9))+str(randint(0,9))+str(randint(0,9))+str(randint(0,9))+str(randint(0,9))
-Radiobutton(root, text='(9) Salir', variable=v, value=9,bg=color,command=root.destroy).pack(anchor=W)
+Radiobutton(root, text='(9) Guardar archivo', variable=v, value=9,bg=color,command=root.destroy).pack(anchor=W)
+color = "#" + str(randint(0,9))+str(randint(0,9))+str(randint(0,9))+str(randint(0,9))+str(randint(0,9))+str(randint(0,9))
+Radiobutton(root, text='(10) Leer archivo', variable=v, value=10,bg=color,command=root.destroy).pack(anchor=W)
+color = "#" + str(randint(0,9))+str(randint(0,9))+str(randint(0,9))+str(randint(0,9))+str(randint(0,9))+str(randint(0,9))
+Radiobutton(root, text='(11) Salir', variable=v, value=11,bg=color,command=root.destroy).pack(anchor=W)
 color = "#" + str(randint(0,9))+str(randint(0,9))+str(randint(0,9))+str(randint(0,9))+str(randint(0,9))+str(randint(0,9))
 
 root.config(bg=color)

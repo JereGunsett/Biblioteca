@@ -26,3 +26,22 @@ libro = Libros("El señor de las moscas", "Novela", "William Golding")
 biblioteca.alta_nuevo_libro(libro)
 print(biblioteca.buscar_libro("El señor de las moscas"))
 print(biblioteca.contiene_libro("El señor de las moscas"))
+
+
+for i in range(10):
+    nombre = i
+    dni = int(str(randint(0,9)) + str(randint(0,9)) + str(randint(0,9)))
+    telefono = i
+    dire = i
+    socio = Socio(dni,nombre,telefono,dire)
+    if biblioteca.contiene_socio(socio.dni):
+        print("El socio ya existe")
+    else:
+        biblioteca.alta_nuevo_socio(socio)
+        print("Socio Agregado")
+print(biblioteca.__str__())
+print('`'*12)
+biblioteca.ordenada()
+print(biblioteca.__str__())
+
+

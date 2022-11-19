@@ -2,8 +2,10 @@ import pickle #libreria para guardar y recuperar informacion
 from listas import *
 from libros import *
 from socios import *
+from random import randint 
 
 class Biblioteca:
+    orden = False
     def __init__(self):
         self.socios = Lista()
         self.libros = Lista()
@@ -28,6 +30,7 @@ class Biblioteca:
     
     def alta_nuevo_socio(self,socio):
         self.socios.agregar(socio)
+        self.orden = False
         
     def baja_socio(self,dni):
         
@@ -59,6 +62,7 @@ class Biblioteca:
     
     def alta_nuevo_libro(self,libro)->None:
         self.libros.agregar(libro)
+        self.orden = False
         
     def baja_libro(self,titulo)->None:
         libro = self.buscar_libro(titulo)
@@ -80,7 +84,43 @@ class Biblioteca:
                 print('El libro ha sido devuelto!')
             if libro.title == titulo and libro.alquilado == None:
                 print('El libro no esta alquilado!')
-            
+                
+    def ordenada(self):
+        if self.orden == False:            
+            n = self.socios.magnitud()
+          
+            for i in range(n-1):
+                intercambio = False
+                
+                for j in range(n-1-i):
+                    socioA = self.socios.devolver(j)
+                    socioB = self.socios.devolver(j+1)
+                    if socioA.dni > socioB.dni :
+                        self.socios.reemplazar(j+1,socioA)
+                        self.socios.reemplazar(j,socioB)
+                        intercambio = True
+         
+                if intercambio == False:
+                    break
+                
+            n = self.libros.magnitud()
+          
+            for i in range(n-1):
+                intercambio = False
+                
+                for j in range(n-1-i):
+                    libroA = self.libros.devolver(j)
+                    libroB = self.libros.devolver(j+1)
+                    if libroA.anio > libroB.anio :
+                        self.libros.reemplazar(j+1,libroA)
+                        self.libros.reemplazar(j,libroB)
+                        intercambio = True
+         
+                if intercambio == False:
+                    break
+                
+            self.orden = True
+                    
     def __str__(self):
         impresion = 'Mi Biblioteca:\n'
         if self.libros.magnitud()==0:
@@ -99,6 +139,7 @@ class Biblioteca:
           socio = self.socios.devolver(i)
           impresion += socio.__str__()
         return impresion
+    
 def guardar_archivo(biblioteca,archivo="libro.pickle"):
     pickle_file = open(archivo, 'wb')
     pickle.dump(biblioteca, pickle_file)
@@ -109,4 +150,3 @@ def leer_archivo(biblioteca,archivo="libro.pickle"):
     biblioteca = pickle.load(pickle_file)
     pickle_file.close()    
     return biblioteca
-    

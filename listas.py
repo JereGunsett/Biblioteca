@@ -91,6 +91,47 @@ class Lista():
         self.ultimo.siguiente = nuevo_nodo
         self.ultimo = nuevo_nodo
     
+    def agregar_indice(self, i, x):
+        if (i > self.tamanio) or (i < 0):
+            # error
+            raise IndexError("Posición inválida")
+
+        # Crea nuevo nodo, con x como dato:
+        nuevo = Nodo(x)
+
+        # Insertar al principio (caso particular)
+        if i == 0:
+            # el siguiente del nuevo pasa a ser el que era primero
+            nuevo.siguiente = self.primero
+            # el nuevo pasa a ser el primero de la lista
+            self.primero = nuevo
+
+        # Insertar en cualquier lugar > 0
+        else:
+            # Recorre la lista hasta llegar a la posición deseada
+            n_ant = self.primero
+            for pos in xrange(1,i):
+                n_ant = n_ant.siguiente
+
+            # Intercala nuevo y obtiene n_ant -> nuevo -> n_ant.prox
+            nuevo.siguiente = n_ant.siguiente
+            n_ant.siguiente = nuevo
+
+        # En cualquier caso, incrementar en 1 la longitud
+        self.tamanio += 1
+    
+    def reemplazar(self,indice,nuevo_dato):
+        if indice >= 0 and indice < self.tamanio:
+            actual = self.primero
+            
+            for i in range(indice):
+                actual = actual.siguiente
+            
+            actual.dato = nuevo_dato
+        else:
+            print('indice fuera de la lista')
+        
+    
     def indice(self, e)->int: # es parecido a buscar
         " el método de la lista toma un elemento y si se encuentra devuelve el primer índice en donde se encuentra"
         nodo = self.primero
@@ -109,9 +150,8 @@ class Lista():
             nodo = nodo.siguiente
         d = nodo.dato
         
-        return d
+        return d      
         
-
 
 if __name__ == "__main__":
     # prueba nodo
