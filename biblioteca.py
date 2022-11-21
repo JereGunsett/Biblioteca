@@ -51,7 +51,7 @@ class Biblioteca:
                 esta = True            
         return esta
     
-    def buscar_libro(self,titulo):
+    def buscar_libro(self,titulo): 
         devolver = None
         i = self.libros.magnitud()
         for j in range(i):

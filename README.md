@@ -12,7 +12,6 @@ Para mas info y actualizacione visite : https://github.com/JereGunsett/Bibliotec
 
 ## Comenzando 🚀
 
-_Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
 
 Deberas ir a la parte <> Clone y desplegar
 Clone
@@ -28,66 +27,43 @@ Mira **Deployment** para conocer como desplegar el proyecto.
 
 ### Pre-requisitos 📋
 
-_Que cosas necesitas para instalar el software y como instalarlas_
-
 ```
 Se necesita Thonny
 https://aprendepython.es/core/devenv/thonny/
 ```
+```
+Se necesita Python
+https://www.python.org/
+```
 
 ### Instalación 🔧
 
-_Una serie de ejemplos paso a paso que te dice lo que debes ejecutar para tener un entorno de desarrollo ejecutandose_
+-Instalar python desde el archivo ejecutable que descargas desde https://www.python.org/downloads/
+-Instalar Thonny desde el archivo ejecutable que dascargamos en https://thonny.org/
+-Descargar desde el repositorio remoto https://github.com/JereGunsett/Biblioteca el archivo Zip y descomprimirlo.
+-Dentro de la carpeta Biblioteca ejecutar el archivo menu.py, abrir con Thonny y correrlo con la tecla F5
+-Cuando este en funcionamiento el menu, dentro de la terminal de Thonny se van a ver funciones la cuales como usuario podemos acceder, para elegir una opcion debemos ingresar el numero de indice de la ocpion.
 
-_Dí cómo será ese paso_
 
-```
-Da un ejemplo
-```
-
-_Y repite_
-
-```
-hasta finalizar
-```
-
-_Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
 
 ## Ejecutando las pruebas ⚙️
 
-_Explica como ejecutar las pruebas automatizadas para este sistema_
+Utilizamos el archivo test.py para realizar las pruebas, estas pruebas son a detalle de cada funcion (No como funcionan todas en conjunto)
 
 ### Analice las pruebas end-to-end 🔩
 
-_Explica que verifican estas pruebas y por qué_
+Comprobamos el funcionamiento de toda la aplicacion de principio a fin, ejecutando el menu con cada una de sus funciones. Estas pruebas garantizan que el flujo de una aplicacion funcione como se esperaria ante la interaccion de un usario real.
 
-```
-Da un ejemplo
-```
-
-### Y las pruebas de estilo de codificación ⌨️
-
-_Explica que verifican estas pruebas y por qué_
-
-```
-Da un ejemplo
-```
-
-## Despliegue 📦
-
-_Agrega notas adicionales sobre como hacer deploy_
 
 ## Construido con 🛠️
 
-_Menciona las herramientas que utilizaste para crear tu proyecto_
+* [Viusual Studio Code] 
 
 * [Thonny] Codigo en Lenguaje Python
 
 ## Autores ✒️
 
-_Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
-
-* **JeremiasGunsett** - *Trabajo Inicial* - [https://github.com/JereGunsett)
+* **JeremiasGunsett** - *[https://github.com/JereGunsett]
 * **MiqueasDrovetta** - *[https://github.com/MiqueasDrovetta]
 
 

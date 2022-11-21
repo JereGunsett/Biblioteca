@@ -1,17 +1,17 @@
 from biblioteca import *
 
 biblioteca = Biblioteca()
-socio = Socio(30331261,"Matias","Botero",4804828)
+socio = Socio(39445690,"Jeremias","Gunsett",3516278454)
 biblioteca.alta_nuevo_socio(socio)
-print(biblioteca.contiene_socio(30331261))
+print(biblioteca.contiene_socio(39445690))
 
-print(biblioteca.buscar_socio(30331261))
-socio1 = biblioteca.buscar_socio(30331261)
+print(biblioteca.buscar_socio(39445690))
+socio1 = biblioteca.buscar_socio(39445690)
 print(socio1.__str__())
 
-biblioteca.baja_socio(30331261)
+biblioteca.baja_socio(39445690)
 
-if biblioteca.contiene_socio(30331261) == False:
+if biblioteca.contiene_socio(39445690) == False:
     print ("El socio no se encuentra registrado") 
 #print(biblioteca.contiene_socio(30331261))
 
@@ -27,6 +27,12 @@ biblioteca.alta_nuevo_libro(libro)
 print(biblioteca.buscar_libro("El señor de las moscas"))
 print(biblioteca.contiene_libro("El señor de las moscas"))
 
+libro = Libros("Las Cuevas", "Terror", "German Lopez")
+libro = Libros("Risas y mas risas", "Comedia", "Marcos Rati")
+libro = Libros("Aprende a decir NO", "Autoayuda", "William Golding")
+libro = Libros("Padre Rico, Padre Pobre", "Economia", "Esteban Duran")
+libro = Libros("El rey del Sur", "Novela", "Drake")
+libro = Libros("Camino a la estabilidad emocional", "Autoayuda", "Gunsett Jeremias")
 
 for i in range(10):
     nombre = i
